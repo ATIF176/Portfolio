@@ -1,0 +1,77 @@
+{% extends 'partials/basics.html' %}
+{% load static %}
+
+{% block title %}
+Contact
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock css %}
+
+{% block body %}
+<!-- ======= Review Form Section ======= -->
+<div class="container">
+    <div class="section-title">
+        <h2>Your Feedback</h2>
+        <p>Your feedback means a lot to me, and it will contribute to the growth and success of my business. If you have
+            any questions or need assistance with the review process, please don't hesitate to reach out to me directly.
+
+            Thank you once again for choosing to work with me. I look forward to hearing from you and hope we can
+            collaborate again in the future.</p>
+    </div>
+    <div class="row" data-aos="fade-in">
+        <div class="col-lg-5 mt-5 mt-lg-0 d-flex align-items-stretch">
+            <form action="{% url 'testimonials' %}" method="post">{% csrf_token %}
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                    {{message}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6 mt-3">
+                        <h5>
+                            <span><i class="fas fa-user"></i> Name</span>
+                        </h5>
+                        <input type="text" class="form-control" name="name" required />
+                    </div>
+                    <div class="form-group col-md-6 mt-3">
+                        <h5>
+                            <span><i class="fas fa-hat-cowboy"></i> Position</span>
+                        </h5>
+                        <input type="text" class="form-control" name="position" required />
+                    </div>
+                </div>
+                <div class="form-group col-md-6 mt-3">
+                    <h5>
+                        <span><i class="fas fa-file-image"></i> Your Image</span>
+                    </h5>
+                    <input type="file" class="form-control" name="img" required />
+                </div>
+
+                <div class="form-group col-md-6 mt-3">
+                    <h5>
+                        <span><i class="fas fa-comments"></i> Message</span>
+                    </h5>
+                    <textarea type="text" class="form-control " name="desc" rows="8" required></textarea>
+                </div>
+                <div class="text-center"><button class="btn btn-dark mt-4" type="submit">Send Message</button></div>
+            </form>
+        </div>
+        </form>
+    </div>
+</div>
+
+</div>
+</section>
+<!-- End Review Form Section -->
+{% endblock body %}
+
+{% block scripts %}
+
+{% endblock scripts %}

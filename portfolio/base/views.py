@@ -1,5 +1,7 @@
+from email.mime import image
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from base.models import Contact , Blog, Testimonials
 
 # Create your views here.
 def home(request):
@@ -10,19 +12,56 @@ def about(request):
 
 def contact(request):
     if request.method == "POST":
-        name = request.POST('name')
-        email = request.POST('email')
-        phone = request.POST('num')
-        message = request.POST('message')
-        print(name, email, phone, message)
-        messages.info(request, f'{name} your message has been sent successfully!')
-        return redirect('contact')
+        fname = request.POST['name']
+        femail = request.POST['email']
+        fphone = request.POST['num']
+        fmessage = request.POST['desc']
+        query = Contact(name=fname, email=femail, phonenumber=fphone, description=fmessage)
+        query.save()
+        messages.info(request, f'{fname} Thanks for contacting us! We will get back to you soon.')
+        return redirect('/contact')
     
     return render(request, 'contact.html',)
 
 def resume(request):
     return render(request, 'resume.html',)
 
+def portfolio(request):
+    return render(request, 'portfolio.html',)
+
+def portfolio_details(request):
+    return render(request, 'portfolio-details.html',)
+
+def testimonials(request):
+    if request.method == "POST":
+        fname = request.POST['name']
+        fposition = request.POST['position']
+        fimg = request.POST['img']
+        print(fimg)
+        fmessage = request.POST['desc']
+        try:
+            # Create and save the Testimonials instance
+            query = Testimonials(name=fname, dept=fposition, image=fimg, description=fmessage)
+            query.save()
+            messages.info(request, f'Thank you, {fname}, for your feedback!')
+        except Exception as e:
+            # Handle exceptions, e.g., database errors
+            messages.error(request, f'Error: {str(e)}')
+        return redirect('/reviews')
+
+    feedbacks = Testimonials.objects.all()
+    context={'feedbacks':feedbacks}
+    
+    return render(request, 'testimonials.html', context)
+
+def reviews(request):
+    return render(request, 'review_form.html',)
+
 def services(request):
     return render(request, 'services.html',)
+
+def blog(request):
+    posts = Blog.objects.all()
+    context = {'posts':posts}
+    return render(request, 'blog.html', context)
 

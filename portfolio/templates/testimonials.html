@@ -1,0 +1,59 @@
+{% extends 'partials/basics.html' %}
+{% load static %}
+
+{% block title %}
+Testimonials
+{% endblock title %}
+
+{% block css %}
+{% endblock css %}
+
+{% block body %}
+<!-- ======= Testimonials Section ======= -->
+<section id="testimonials" class="testimonials section-bg">
+    <div class="container">
+        <div style="display: flex; justify-content: flex-end;">
+            <span><a href="{% url 'reviews' %}">Your thought's?</a></span>
+        </div>
+        <div class="section-title">
+            {% for message in messages %}
+  
+            <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+              <strong>{{message}} </strong> 
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            <h2>Testimonials</h2>
+            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+                consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
+                sit in iste officiis commodi quidem hic quas.</p>
+        </div>
+
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+            <div class="swiper-wrapper">
+                {% for feedback in feedbacks reversed %}
+                <div class="swiper-slide">
+                    <div class="testimonial-item" data-aos="fade-up">
+                        <p>
+                            <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                            {{ feedback.description }}
+                            <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                        </p>
+                        <img src="{{ feedback.image.url }}" class="testimonial-img" alt="">
+                        <h3>{{ feedback.name }}</h3>
+                        <h4>{{ feedback.dept }}</h4>
+                    </div>
+                </div><!-- End testimonial item -->
+                {% endfor %}
+
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+    </div>
+</section><!-- End Testimonials Section -->
+{% endblock body %}
+
+{% block scripts %}
+
+{% endblock scripts %}

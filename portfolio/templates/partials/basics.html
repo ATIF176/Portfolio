@@ -1,4 +1,4 @@
-{% load static %} 
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,11 +11,13 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/Favicon.png' %}" rel="icon">
   <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
@@ -28,7 +30,7 @@
   <!-- Template Main CSS File -->
   <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
 
-  {% block css %} 
+  {% block css %}
 
   {% endblock css %}
   <!-- =======================================================
@@ -49,15 +51,28 @@
   <header id="header">
     <div class="d-flex flex-column">
 
+      <div class="credits text-light" style="display: flex; justify-content: flex-end;">
+        {% if user.is_authenticated %}
+        <li style="list-style: none;"><a href="{% url 'handlelogout' %}" class="nav-link scrollto"><i
+              class="bx bx-user"></i> <span>Logout</span></a></li>
+        {% else %}
+        <li style="list-style: none;"><a href="{% url 'handlelogin' %}" class="nav-link scrollto"><i
+              class="bx bx-user"></i> <span>login</span></a></li>
+        {% endif %}
+      </div>
+
       <div class="profile">
-        <img src="{% static 'assets/img/profile-img.jpg' %}" alt="" class="img-fluid rounded-circle">
+        <img src="{% static 'assets/img/Profile-img.jpg' %}" alt="" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="index.html">Mohammad Dillawar</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="https://twitter.com/dillawar721" class="twitter"><i class="bx bxl-twitter"></i></a>
-          <a href="https://www.facebook.com/profile.php?id=100083249125926" class="facebook"><i class="bx bxl-facebook"></i></a>
-          <a href="https://instagram.com/pythonist786?igshid=MzNlNGNkZWQ4Mg==" class="instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=100083249125926" class="facebook"><i
+              class="bx bxl-facebook"></i></a>
+          <a href="https://instagram.com/pythonist786?igshid=MzNlNGNkZWQ4Mg==" class="instagram"><i
+              class="bx bxl-instagram"></i></a>
           <a href="https://github.com/ATIF176" class="github"><i class="bx bxl-github"></i></a>
-          <a href="https://www.linkedin.com/in/mohammad-dillawar-760501246" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+          <a href="https://www.linkedin.com/in/mohammad-dillawar-760501246" class="linkedin"><i
+              class="bx bxl-linkedin"></i></a>
         </div>
       </div>
 
@@ -66,46 +81,33 @@
           <li><a href="/" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
           <li><a href="/about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
           <li><a href="/resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-          <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+          <li><a href="/portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i>
+              <span>Portfolio</span></a></li>
           <li><a href="/services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li>
-          <li><a href="/contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+          <li><a href="/testimonials" class="nav-link scrollto"><i class="bx bx-star"></i>
+              <span>Testimonials</span></a></li>
+          <li><a href="/contact" class="nav-link scrollto"><i class="bx bx-phone"></i> <span>Contact</span></a></li>
+          <li><a href="/blog" class="nav-link scrollto"><i class="bx bx-news"></i> <span>Blog</span></a></li>
         </ul>
       </nav><!-- .nav-menu -->
     </div>
   </header><!-- End Header -->
 
-  {% block hero %} 
+  {% block hero %}
 
   {% endblock hero %}
 
   <main id="main">
-    {% block body %} 
+    {% block body %}
 
     {% endblock body %}
   </main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>MyFolio</span></strong>
-      </div>
-      <div class="credits">
-        {% if user.is_authenticated %}
-        <li style="list-style: none;"><a href="{% url 'handlelogout' %}" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Logout</span></a></li>
-        {% else %}
-        <li style="list-style: none;"><a href="{% url 'handlelogin' %}" class="nav-link scrollto"><i class="bx bx-user"></i> <span>login</span></a></li>
-        {% endif %}
-      </div>
-    </div>
-  </footer><!-- End  Footer -->
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
   <!-- Vendor JS Files -->
 
-{% block scripts %} 
+  {% block scripts %}
 
-{% endblock scripts %} 
+  {% endblock scripts %}
 
   <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
   <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
@@ -123,4 +125,3 @@
 </body>
 
 </html>
-
