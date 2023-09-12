@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-Contact
+Feedback Form
 {% endblock title %}
 
 {% block css %}
@@ -24,7 +24,7 @@ Contact
     </div>
     <div class="row" data-aos="fade-in">
         <div class="col-lg-5 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="{% url 'testimonials' %}" method="post">{% csrf_token %}
+            <form action="{% url 'testimonials' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
                 {% if messages %}
                 {% for message in messages %}
                 <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">

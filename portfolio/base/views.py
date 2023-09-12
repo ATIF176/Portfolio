@@ -1,7 +1,8 @@
 from email.mime import image
-from django.shortcuts import render, redirect
+from tokenize import Pointfloat
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from base.models import Contact , Blog, Testimonials
+from base.models import Contact , Blog, Testimonials, Projects
 
 # Create your views here.
 def home(request):
@@ -27,16 +28,21 @@ def resume(request):
     return render(request, 'resume.html',)
 
 def portfolio(request):
-    return render(request, 'portfolio.html',)
+    projects = Projects.objects.all()
+    context = {'projects':projects}
+    return render(request, 'portfolio.html',context)
 
-def portfolio_details(request):
-    return render(request, 'portfolio-details.html',)
+def portfolio_details(request, slug_url):
+    project = Projects.objects.get(slug=slug_url)
+    print(project)
+    context = {'project':project}
+    return render(request, 'portfolio-details.html', context)
 
 def testimonials(request):
     if request.method == "POST":
         fname = request.POST['name']
         fposition = request.POST['position']
-        fimg = request.POST['img']
+        fimg = request.FILES.get('img', None)
         print(fimg)
         fmessage = request.POST['desc']
         try:
@@ -49,7 +55,7 @@ def testimonials(request):
             messages.error(request, f'Error: {str(e)}')
         return redirect('/reviews')
 
-    feedbacks = Testimonials.objects.all()
+    feedbacks = Testimonials.objects.all()[:5]
     context={'feedbacks':feedbacks}
     
     return render(request, 'testimonials.html', context)

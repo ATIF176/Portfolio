@@ -6,13 +6,9 @@ Contact
 {% endblock title %}
 
 {% block css %}
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
   integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
 {% endblock css %}
 
 {% block body %}
@@ -34,23 +30,23 @@ Contact
           <div class="address">
             <i class="bi bi-geo-alt"></i>
             <h4>Location:</h4>
-            <p>A108 Adam Street, New York, NY 535022</p>
+            <p>Narowal Punjab Pakistan</p>
           </div>
 
           <div class="email">
             <i class="bi bi-envelope"></i>
             <h4>Email:</h4>
-            <p>info@example.com</p>
+            <p>dillawar612@gmail.com</p>
           </div>
 
           <div class="phone">
             <i class="bi bi-phone"></i>
             <h4>Call:</h4>
-            <p>+1 5589 55488 55s</p>
+            <p>+92 315 6765056</p>
           </div>
 
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54074.06163388306!2d74.87634195000001!3d32.10631519999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39195386748c99ed%3A0x58fa5441bb1acd47!2sNarowal%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1694500886032!5m2!1sen!2s"
             frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
         </div>
 
@@ -66,34 +62,34 @@ Contact
             {% endfor %}
             {% endif %}
           </div>
-            <div class="row">
-              <div class="form-group col-md-6">
-                <h5>
-                  <span><i class="fas fa-user"></i> Name</span>
-                </h5>
-                <input type="text" class="form-control" name="name" required />
-              </div>
-              <div class="form-group col-md-6">
-                <h5>
-                  <span><i class="fas fa-envelope"></i> Email</span>
-                </h5>
-                <input type="email" value="{{user.email}}" class="form-control" name="email" required />
-              </div>
-            </div>
-            <div class="form-group">
+          <div class="row">
+            <div class="form-group col-md-6">
               <h5>
-                <span><i class="fas fa-phone-alt"></i> Phone No.</span>
+                <span><i class="fas fa-user"></i> Name</span>
               </h5>
-              <input type="number" class="form-control" name="num" required />
+              <input type="text" class="form-control" name="name" required />
             </div>
+            <div class="form-group col-md-6">
+              <h5>
+                <span><i class="fas fa-envelope"></i> Email</span>
+              </h5>
+              <input type="email" value="{{user.email}}" class="form-control" name="email" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <h5>
+              <span><i class="fas fa-phone-alt"></i> Phone No.</span>
+            </h5>
+            <input type="number" class="form-control" name="num" required />
+          </div>
 
-            <div class="form-group">
-              <h5>
-                <span><i class="fas fa-comments"></i> Message</span>
-              </h5>
-              <textarea type="text" class="form-control " name="desc" rows="10" required></textarea>
-            </div>
-            <div class="text-center"><button class="btn btn-dark mt-4" type="submit">Send Message</button></div>
+          <div class="form-group">
+            <h5>
+              <span><i class="fas fa-comments"></i> Message</span>
+            </h5>
+            <textarea type="text" class="form-control " name="desc" rows="10" required></textarea>
+          </div>
+          <div class="text-center"><button class="btn btn-dark mt-4" type="submit">Send Message</button></div>
         </form>
       </div>
 
